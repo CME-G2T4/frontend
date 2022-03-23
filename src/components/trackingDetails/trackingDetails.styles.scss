@@ -1,0 +1,53 @@
+.trackingHeader {
+  
+
+  @media screen and (min-width: 600px) {
+    & {
+      font-size: 40px;
+    }
+  }
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  @media screen and (max-width: 599px) {
+    & {
+      font-size: 30px;
+    }
+  }
+}
+
+.trackingDetails {
+  .trackingTitle {
+    color: pink;
+  
+    @media screen and (min-width: 600px) {
+      & {
+        font-size: 30px;
+      }
+    }
+    
+    /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+    @media screen and (max-width: 599px) {
+      & {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .trackingDesc {
+    color: orange;
+  
+    @media screen and (min-width: 600px) {
+      & {
+        font-size: 30px;
+      }
+    }
+    
+    /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+    @media screen and (max-width: 599px) {
+      & {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
