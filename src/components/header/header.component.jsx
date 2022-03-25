@@ -73,6 +73,24 @@ export default function Header() {
           </ListItemIcon>
           <ListItemText primary={`Tracking Info`} />
         </ListItem>
+        {/* Upload */}
+        <ListItem button component="a" href="/upload" className={"" + ( pathname === "/upload" ? "current" : "")} >
+          <ListItemIcon >
+            <Icon classes={{root: useStyles.iconRoot}}>
+              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+            </Icon>
+          </ListItemIcon>
+          <ListItemText primary={`Upload Orders`} />
+        </ListItem>
+        {/* Display */}
+        <ListItem button component="a" href="/display" className={"" + ( pathname === "/display" ? "current" : "")} >
+          <ListItemIcon >
+            <Icon classes={{root: useStyles.iconRoot}}>
+              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+            </Icon>
+          </ListItemIcon>
+          <ListItemText primary={`Display Orders`} />
+        </ListItem>
       </List>
     </Box>
   );
