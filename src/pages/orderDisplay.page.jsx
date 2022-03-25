@@ -3,6 +3,7 @@ import axios from 'axios';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
 import OrderDetails from '../components/orderDisplay/orderDetails.component';
 
 const OrderDisplay = () => {
@@ -20,14 +21,20 @@ const OrderDisplay = () => {
     }, [])
 
     return (
-        <Container maxWidth="lg">
-            <Box my={3}>
-                <Paper elevation={3}>
-                    <h1>Order Display</h1>
-                    <OrderDetails data={data}/>
-                </Paper>
-            </Box>
-        </Container>
+        <>
+
+            <Container maxWidth="lg">
+                <Box my={3}>
+                    <Paper elevation={3}>
+                        <h1>Order Display</h1>
+                        {loading ? <CircularProgress /> :
+                            <OrderDetails data={data} />
+                        }
+                    </Paper>
+                </Box>
+            </Container>
+
+        </>
     )
 }
 
