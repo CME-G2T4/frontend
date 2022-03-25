@@ -17,7 +17,7 @@ jobs:
           ref: development-server
       - uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
       - name: Cache modules
         uses: actions/cache@v2
         id: yarn-cache
