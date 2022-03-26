@@ -16,6 +16,7 @@ import { makeStyles } from '@mui/styles';
 
 // import './header.styles.scss';
 import Logo from '../../assets/logo.png';
+import Status from './status.component';
 
 export default function Header() {
 
@@ -106,6 +107,7 @@ export default function Header() {
                 <img style={{ width: "50%", margin: 'auto'}} src={Logo} alt="ShinobiLorry"  />
               </Box>
             </Typography>
+            <Status />
           </Toolbar>
         </AppBar>
       </Box>
