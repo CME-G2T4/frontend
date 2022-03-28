@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from '@mui/material/Table';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import { useTheme } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -97,7 +96,7 @@ const FufilmentDetails = (props) => {
 
     return (
         <>
-            <TableContainer component={Paper}>
+            <TableContainer>
                 <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
                     <TableHead>
                         <TableRow>

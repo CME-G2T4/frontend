@@ -12,7 +12,7 @@ const FulfilmentDisplay = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5002/fulfilment')
+        axios.get('https://hp4m4i50v0.execute-api.ap-southeast-1.amazonaws.com/api/v1/fulfilment')
             .then(res => {
                 console.log(res)
                 setData(res.data.data.items);

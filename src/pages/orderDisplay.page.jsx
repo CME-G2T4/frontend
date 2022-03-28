@@ -12,7 +12,7 @@ const OrderDisplay = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/orders')
+        axios.get('https://hp4m4i50v0.execute-api.ap-southeast-1.amazonaws.com/api/v1/orders')
             .then(res => {
                 setData(res.data.data.orders);
                 setLoading(false);
