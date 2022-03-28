@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AccountContext } from '../account/account.store';
+import Button from '@mui/material/Button';
 
 function Status() {
   const [status, setStatus] = useState(false);
@@ -16,12 +17,11 @@ function Status() {
 
   return (
     <div>
-      {status ? (
+      { status ? (
         <div>
-          You are logged in.
-          <button onClick={logout}>Logout</button>
+          <Button onClick={logout} component="a" href="/">LOGOUT</Button>
         </div>
-      ) : 'Please login below.'}
+      ) : <Button variant="contained" component="a" href="/login">LOGIN</Button> }
     </div>
   );
 };

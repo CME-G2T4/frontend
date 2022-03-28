@@ -4,13 +4,15 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 import SignInForm from '../components/signinform/signinform.component';
+import './pages.styles.scss';
 
 function Login() {
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="sm">
       <Box my={3}>
-        <Paper elevation={3}>
+        <Box mb={3} className="header">Staff Login</Box>
+        <Paper elevation={5}>
           <SignInForm />
         </Paper>
       </Box>
