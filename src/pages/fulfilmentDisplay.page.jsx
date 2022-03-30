@@ -4,17 +4,18 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
-import OrderDetails from '../components/orderDisplay/orderDetails.component';
+import FufilmentDetails from '../components/fulfilmentDisplay/fulfilmentDetails.component';
 
-const OrderDisplay = () => {
+const FulfilmentDisplay = () => {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://hp4m4i50v0.execute-api.ap-southeast-1.amazonaws.com/api/v1/orders')
+        axios.get('https://hp4m4i50v0.execute-api.ap-southeast-1.amazonaws.com/api/v1/fulfilment')
             .then(res => {
-                setData(res.data.data.orders);
+                console.log(res)
+                setData(res.data.data.items);
                 setLoading(false);
             })
 
@@ -26,9 +27,9 @@ const OrderDisplay = () => {
             <Container maxWidth="lg">
                 <Box my={3}>
                     <Paper elevation={3}>
-                        <h1>Order Display</h1>
+                        <h1>Fulfilment Display</h1>
                         {loading ? <CircularProgress /> :
-                            <OrderDetails data={data} />
+                            <FufilmentDetails data={data} />
                         }
                     </Paper>
                 </Box>
@@ -38,4 +39,4 @@ const OrderDisplay = () => {
     )
 }
 
-export default OrderDisplay;
+export default FulfilmentDisplay;

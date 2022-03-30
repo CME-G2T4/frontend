@@ -15,6 +15,7 @@ const OrderDetails = (props) => {
                     <TableRow>
                         <TableCell>Order ID</TableCell>
                         <TableCell align="right">Customer Name</TableCell>
+                        <TableCell align="right">Customer Email</TableCell>
                         <TableCell align="right">Order Address</TableCell>
                         <TableCell align="right">Order DateTime</TableCell>
                         <TableCell align="right">Order Details</TableCell>
@@ -33,6 +34,7 @@ const OrderDetails = (props) => {
                                 {row.order_id}
                             </TableCell>
                             <TableCell align="right">{row.customer_name}</TableCell>
+                            <TableCell align="right">Email</TableCell>
                             <TableCell align="right">{row.order_address}</TableCell>
                             <TableCell align="right">{row.order_datetime}</TableCell>
                             <TableCell align="right">{row.order_details}</TableCell>

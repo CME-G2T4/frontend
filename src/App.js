@@ -7,6 +7,7 @@ import Store from './components/store/store.component.jsx';
 import Tracking from './pages/tracking.page.jsx';
 import Upload from './pages/upload.page.jsx';
 import OrderDisplay from './pages/orderDisplay.page';
+import FulfilmentDisplay from './pages/fulfilmentDisplay.page';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/tracking" element={<Tracking />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/display" element={<OrderDisplay />} />
+          <Route path="/fulfilment" element={<FulfilmentDisplay />} />
         </Routes>
     </Store>
   );
