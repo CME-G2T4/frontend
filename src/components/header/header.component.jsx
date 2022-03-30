@@ -72,7 +72,7 @@ export default function Header() {
               {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
             </Icon>
           </ListItemIcon>
-          <ListItemText primary={`Tracking Info`} />
+          <ListItemText primary={`Track My Parcel`} />
         </ListItem>
       </List>
     </Box>

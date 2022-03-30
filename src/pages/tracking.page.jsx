@@ -99,12 +99,12 @@ function Tracking() {
           : null
         }
 
-        <Snackbar open={openLoading} onClose={handleClose} >
+        <Snackbar open={openLoading} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
           <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
             Retrieving ...
           </Alert>
         </Snackbar>
-        <Snackbar open={openFailure} autoHideDuration={6000} onClose={handleClose} >
+        <Snackbar open={openFailure} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
             Invalid Tracking Number
           </Alert>

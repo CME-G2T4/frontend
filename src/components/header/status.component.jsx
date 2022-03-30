@@ -10,7 +10,7 @@ function Status() {
   useEffect(() => {
     getSession()
       .then(session => {
-        console.log('Session:', session);
+        // console.log('Session:', session);
         setStatus(true);
       })
   }, []);
@@ -19,7 +19,7 @@ function Status() {
     <div>
       { status ? (
         <div>
-          <Button onClick={logout} component="a" href="/">LOGOUT</Button>
+          <Button variant="contained" color="error" onClick={logout} component="a" href="/">LOGOUT</Button>
         </div>
       ) : <Button variant="contained" component="a" href="/login">LOGIN</Button> }
     </div>

@@ -30,12 +30,12 @@ const Account = props => {
 
       user.authenticateUser(authDetails, {
         onSuccess: data => {
-          console.log('onSuccess:', data);
+          console.log('onSuccess:');
           resolve(data);
         },
 
         onFailure: err => {
-          console.error('onFailure:', err);
+          console.error('onFailure:');
           reject(err);
         },
 

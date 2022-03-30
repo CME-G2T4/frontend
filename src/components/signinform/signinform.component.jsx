@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AccountContext } from '../account/account.store';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -33,6 +34,7 @@ function SignInForm() {
   const [password, setPassword] = useState('');
 
   const { authenticate } = useContext(AccountContext);
+  const navigate = useNavigate();
 
   const onSubmit = event => {
     event.preventDefault();
@@ -43,7 +45,7 @@ function SignInForm() {
         setOpenFailure(false);
         setOpenSuccess(true);
         setTimeout(() => {
-          window.location.href("/");
+          navigate("/");
         }, 3000);
       })
       .catch(err => {
@@ -56,7 +58,7 @@ function SignInForm() {
   return (
     <Box py={3}>
       <Box component="form" onSubmit={onSubmit} autoComplete="off" sx={{
-        '& .MuiTextField-root': { mx: 1 },
+        '& .MuiTextField-root': { m: 1 },
         textAlign: 'center'
       }}>
         {/* <input
@@ -81,23 +83,23 @@ function SignInForm() {
           type="password"
         />
 
-        <Box mt={2} sx={{ textAlign: 'center' }}>
+        <Box mt={1} sx={{ textAlign: 'center' }}>
           <Button type='submit' onClick={handleClick} variant="contained">Login</Button>
         </Box>
       </Box>
 
-      <Snackbar open={openLoading} onClose={handleClose} >
+      <Snackbar open={openLoading} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
           Logging in ...
         </Alert>
       </Snackbar>
 
-      <Snackbar open={openSuccess} autoHideDuration={5000} onClose={handleClose} >
+      <Snackbar open={openSuccess} autoHideDuration={5000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
           Login Success! Redirecting...
         </Alert>
       </Snackbar>
-      <Snackbar open={openFailure} autoHideDuration={5000} onClose={handleClose} >
+      <Snackbar open={openFailure} autoHideDuration={5000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
           Login Failed! Incorrect Email/Password.
         </Alert>
