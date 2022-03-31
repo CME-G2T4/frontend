@@ -36,4 +36,4 @@ jobs:
       - name: Build
         run: yarn build --mode development
       - name: Deploy
-        run: aws s3 sync ./build s3://cme-project-frontend-bucket
+        run: aws s3 sync ./build s3://cme-project-frontend-development
