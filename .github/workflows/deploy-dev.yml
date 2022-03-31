@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: main
+          ref: development-server
       - uses: actions/setup-node@v2
         with:
           node-version: 14
@@ -36,4 +36,4 @@ jobs:
       - name: Build
         run: yarn build --mode development
       - name: Deploy
-        run: aws s3 sync ./build s3://cme-project-frontend-bucket
+        run: aws s3 sync ./build s3://cme-project-frontend-development
