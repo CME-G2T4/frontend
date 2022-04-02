@@ -61,7 +61,7 @@ function Order() {
           navigate("/")
         }, 5000)
       })
-  }, []);
+  });
 
   return (
     <Container maxWidth="sm">

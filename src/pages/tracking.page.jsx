@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import './pages.styles.scss';
 import TrackingDetails from '../components/trackingDetails/trackingDetails.component.jsx';
@@ -24,6 +25,15 @@ function Tracking() {
 
   const handleClick = () => {
     setOpenLoading(true);
+    setLoading(true);
+
+    if (!Number.isInteger(trackingNumber)) {
+      setOpenLoading(false);
+      setOpenFailure(true);
+      setShow(false);
+      setLoading(false);
+      return;
+    }
   };
 
   const handleClose = (event, reason) => {
@@ -37,15 +47,17 @@ function Tracking() {
   const [trackingNumber, setTrackingNumber] = useState('');
   const [show, setShow] = useState(false);
   const [orderDetails, setOrderDetails] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { api_link } = useContext(AccountContext);
 
   const onSubmit = event => {
     event.preventDefault();
+    
     axios.get(api_link + `/orders/` + trackingNumber)
       .then(res => {
         const orderDetail = res.data.data; 
-        console.log(orderDetail);
+        // console.log(orderDetail);
         
         setOrderDetails(orderDetail);
         setShow(true);
@@ -56,6 +68,8 @@ function Tracking() {
         setOpenFailure(true);
         setShow(false);
       })
+
+    setLoading(false);
   };
 
   return (
@@ -75,18 +89,24 @@ function Tracking() {
                 onChange={e => setTrackingNumber(e.target.value)}
               />
             </Box>
-            <Box>
-              <Button 
-                className="fat-button" 
-                variant="contained" 
-                type='submit' 
-                size='large' 
-                endIcon={<SearchIcon />}
-                onClick={handleClick}
-              >
-                Track Parcel
-              </Button>
-            </Box>
+            {
+              loading ?
+              <Box mt={5} sx={{ display: 'flex', justifyContent: 'center' }}><CircularProgress /></Box>
+              :
+              <Box>
+                <Button 
+                  className="fat-button" 
+                  variant="contained" 
+                  type='submit' 
+                  size='large' 
+                  endIcon={<SearchIcon />}
+                  onClick={handleClick}
+                >
+                  Track Parcel
+                </Button>
+              </Box>
+            }
+            
           </form>
         </Box>
         {

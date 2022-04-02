@@ -28,8 +28,6 @@ export default function Header() {
   //   var item = pathname.split("/")[2];
   // }
 
-  // const [openTH, setOpenTH] = useState(true);
-
   // For the icons
   const useStyles = makeStyles({
     imageIcon: {

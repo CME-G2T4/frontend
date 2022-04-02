@@ -13,7 +13,7 @@ function Status() {
         // console.log('Session:', session);
         setStatus(true);
       })
-  }, []);
+  })
 
   return (
     <div>
