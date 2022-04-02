@@ -7,6 +7,9 @@ import { Account } from './components/account/account.store.jsx';
 import Tracking from './pages/tracking.page';
 import Login from './pages/login.page';
 import Order from './pages/order.page';
+import Upload from './pages/upload.page.jsx';
+import OrderDisplay from './pages/orderDisplay.page';
+import FulfilmentDisplay from './pages/fulfilmentDisplay.page';
 
 function App() {
   return (
@@ -17,9 +20,12 @@ function App() {
         <Route path="/tracking" element={<Tracking />} />
         <Route path="/login" element={<Login />} />
         <Route path="/order/:trackingNumber" element={<Order />} />
+        <Route path="/upload" element={<Upload />} />
+        <Route path="/display" element={<OrderDisplay />} />
+        <Route path="/fulfilment" element={<FulfilmentDisplay />} />
       </Routes>
     </Account>
-  );
+  )
 }
 
 export default App;

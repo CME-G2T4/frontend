@@ -28,7 +28,7 @@ export default function Header() {
   //   var item = pathname.split("/")[2];
   // }
 
-  const [openTH, setOpenTH] = useState(true);
+  // const [openTH, setOpenTH] = useState(true);
 
   // For the icons
   const useStyles = makeStyles({
@@ -73,6 +73,33 @@ export default function Header() {
             </Icon>
           </ListItemIcon>
           <ListItemText primary={`Track My Parcel`} />
+        </ListItem>
+        {/* Upload */}
+        <ListItem button component="a" href="/upload" className={"" + ( pathname === "/upload" ? "current" : "")} >
+          <ListItemIcon >
+            <Icon classes={{root: useStyles.iconRoot}}>
+              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+            </Icon>
+          </ListItemIcon>
+          <ListItemText primary={`Upload Orders`} />
+        </ListItem>
+        {/* Display */}
+        <ListItem button component="a" href="/display" className={"" + ( pathname === "/display" ? "current" : "")} >
+          <ListItemIcon >
+            <Icon classes={{root: useStyles.iconRoot}}>
+              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+            </Icon>
+          </ListItemIcon>
+          <ListItemText primary={`Display Orders`} />
+        </ListItem>
+        {/* Fulfilment */}
+        <ListItem button component="a" href="/fulfilment" className={"" + ( pathname === "/fulfilment" ? "current" : "")} >
+          <ListItemIcon >
+            <Icon classes={{root: useStyles.iconRoot}}>
+              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+            </Icon>
+          </ListItemIcon>
+          <ListItemText primary={`Display Fulfilment`} />
         </ListItem>
       </List>
     </Box>
