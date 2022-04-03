@@ -57,7 +57,7 @@ export default function Header() {
     >
       <Box my={1}>
         <Toolbar component="a" href="/">
-          <img style={{width:"100%"}} src={Logo} alt="Aramco"  />
+          <img style={{width:"100%"}} src={Logo} alt="ShinobiLorry"  />
         </Toolbar>
       </Box>
       <Divider />
@@ -106,7 +106,7 @@ export default function Header() {
   return (
     <>
       <Box>
-        <AppBar position="static" color="transparent" enableColorOnDark="true" style={{  }}>
+        <AppBar position="static" color="transparent" style={{  }}>
           <Toolbar>
             <IconButton
               size="large"
@@ -122,6 +122,7 @@ export default function Header() {
               anchor={'left'}
               open={state['left']}
               onClose={toggleDrawer('left', false)}
+              onOpen={toggleDrawer('left', true)}
             >
               { list('left') }
             </SwipeableDrawer>

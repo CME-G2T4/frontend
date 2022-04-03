@@ -4,7 +4,8 @@ import Pool from '../userPool/UserPool';
 
 const AccountContext = createContext();
 
-const api_link = "https://rbspz3g100.execute-api.ap-northeast-1.amazonaws.com/api/v1";
+// const api_link = "https://rbspz3g100.execute-api.ap-northeast-1.amazonaws.com/api/v1";
+const api_link = "https://api.shinobilorry.ninja/v1";
 
 const Account = props => {
   const getSession = async () =>
@@ -39,28 +40,28 @@ const Account = props => {
           reject(err);
         },
 
-        newPasswordRequired: function(userAttributes, requiredAttributes) {
+        newPasswordRequired: function (userAttributes, requiredAttributes) {
           console.log('newPasswordRequired:', userAttributes);
           // User was signed up by an admin and must provide new
           // password and required attributes, if any, to complete
           // authentication.
-      
+
           // the api doesn't accept this field back
           // delete userAttributes.email_verified;
-      
+
           // unsure about this field, but I don't send this back
           // delete userAttributes.phone_number_verified;
-      
+
           // Get these details and call
           user.completeNewPasswordChallenge(Password, requiredAttributes, this);
           resolve(Pool.getCurrentUser());
           // resolve(user);
-      }
+        }
       });
     });
   }
-    
-  
+
+
   const logout = () => {
     const user = Pool.getCurrentUser();
     if (user) {

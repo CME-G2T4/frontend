@@ -116,7 +116,7 @@ const OrderDetails = (props) => {
                         : props.data
                     ).map((row) => (
                         <TableRow
-                            key={row.fulfilment_id}
+                            key={row.order_id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">

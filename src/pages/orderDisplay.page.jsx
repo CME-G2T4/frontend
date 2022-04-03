@@ -21,6 +21,9 @@ const OrderDisplay = () => {
                 setData(res.data.data.orders);
                 setLoading(false);
             })
+            .catch(error => {
+                console.log(error);
+            })
 
     })
 
