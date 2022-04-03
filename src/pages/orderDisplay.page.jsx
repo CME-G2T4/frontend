@@ -22,7 +22,7 @@ const OrderDisplay = () => {
                 setLoading(false);
             })
 
-    })
+    }, [api_link])
 
     return (
         <>

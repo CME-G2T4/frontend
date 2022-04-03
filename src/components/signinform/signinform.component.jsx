@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AccountContext } from '../account/account.store';
 import Box from '@mui/material/Box';
@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-function SignInForm() {
+function SignInForm(props) {
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -33,7 +33,7 @@ function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { authenticate } = useContext(AccountContext);
+  const { authenticate, getSession } = useContext(AccountContext);
   const navigate = useNavigate();
 
   const onSubmit = event => {
@@ -41,19 +41,27 @@ function SignInForm() {
 
     authenticate(email, password)
       .then(data => {
-        console.log('Logged in!', data);
+        // console.log('Logged in!', data);
         setOpenFailure(false);
         setOpenSuccess(true);
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 1500);
       })
       .catch(err => {
-        console.error('Failed to login!', err);
+        // console.error('Failed to login!', err);
         setOpenLoading(false);
         setOpenFailure(true);
       })
   };
+
+  // Simple redirection
+  useEffect(() => {
+    getSession()
+      .then(session => {
+        navigate("/");
+      })
+  })
 
   return (
     <Box py={3}>
@@ -61,20 +69,12 @@ function SignInForm() {
         '& .MuiTextField-root': { m: 1 },
         textAlign: 'center'
       }}>
-        {/* <input
-          value={email}
-          onChange={event => setEmail(event.target.value)}
-        /> */}
         <TextField 
           required
           value={email}
           onChange={event => setEmail(event.target.value)} 
           label="Email"
         />
-        {/* <input
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-        /> */}
         <TextField 
           required
           value={password}

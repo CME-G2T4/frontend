@@ -18,12 +18,10 @@ const FulfilmentDisplay = () => {
     useEffect(() => {
         axios.get( api_link + '/fulfilment')
             .then(res => {
-                console.log(res)
                 setData(res.data.data.items);
                 setLoading(false);
             })
-
-    })
+    }, [api_link])
 
     return (
         <>

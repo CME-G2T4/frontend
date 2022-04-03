@@ -36,6 +36,7 @@ function Order() {
   };
 
   const [details, setDetails] = useState([]);
+  const [timer, setTimer] = useState(5);
 
   useEffect(() => {
     getSession()
@@ -60,8 +61,14 @@ function Order() {
         setTimeout(() =>{
           navigate("/")
         }, 5000)
+        setTimeout(() => {
+          let current = timer - 1
+          setTimer(current);
+        }, 1000)
       })
-  });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container maxWidth="sm">
@@ -91,7 +98,7 @@ function Order() {
           : 
             <Paper elevation="5">
               <Box p={3} style={{ fontWeight: 'bold', fontSize: '4vw', textAlign: 'center' }}>
-                "Unauthorized Access. Redirecting to Home in 5 seconds..."
+                Unauthorized Access. Redirecting to Home in { timer } seconds...
               </Box>
             </Paper>
         }
