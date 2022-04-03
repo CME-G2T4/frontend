@@ -25,7 +25,7 @@ const OrderDisplay = () => {
                 console.log(error);
             })
 
-    })
+    },[])
 
     return (
         <>

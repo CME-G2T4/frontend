@@ -23,7 +23,7 @@ const FulfilmentDisplay = () => {
                 setLoading(false);
             })
 
-    })
+    },[])
 
     return (
         <>
