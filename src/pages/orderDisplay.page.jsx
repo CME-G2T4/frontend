@@ -25,7 +25,7 @@ const OrderDisplay = () => {
                 console.log(error);
             })
 
-    })
+    }, [api_link])
 
     return (
         <>

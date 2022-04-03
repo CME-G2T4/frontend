@@ -14,26 +14,24 @@ import CircularProgress from '@mui/material/CircularProgress';
 import './pages.styles.scss';
 import TrackingDetails from '../components/trackingDetails/trackingDetails.component.jsx';
 
+
 function Tracking() {
 
   const [openLoading, setOpenLoading] = useState(false);
   const [openFailure, setOpenFailure] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
 
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
+  
+  const isNumeric = (n) => {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
 
   const handleClick = () => {
-    setOpenLoading(true);
-    setLoading(true);
-
-    if (!Number.isInteger(trackingNumber)) {
-      setOpenLoading(false);
-      setOpenFailure(true);
-      setShow(false);
-      setLoading(false);
-      return;
-    }
+    setOpenFailure(false);
+    setOpenSuccess(false);
   };
 
   const handleClose = (event, reason) => {
@@ -53,23 +51,36 @@ function Tracking() {
 
   const onSubmit = event => {
     event.preventDefault();
-    
+
+    setOpenLoading(true);
+    setLoading(true);
+
+    if (trackingNumber.trim() === '' || !isNumeric(trackingNumber)) {
+      setOpenLoading(false);
+      setOpenFailure(true);
+      setOpenSuccess(false);
+      setShow(false);
+      setLoading(false);
+      return;
+    }
+
     axios.get(api_link + `/orders/` + trackingNumber)
       .then(res => {
         const orderDetail = res.data.data; 
-        // console.log(orderDetail);
-        
         setOrderDetails(orderDetail);
         setShow(true);
         setOpenLoading(false);
+        setOpenFailure(false);
+        setOpenSuccess(true);
       })
       .catch(err => {
         setOpenLoading(false);
         setOpenFailure(true);
         setShow(false);
+        setOpenSuccess(false);
       })
 
-    setLoading(false);
+      setLoading(false);
   };
 
   return (
@@ -121,10 +132,15 @@ function Tracking() {
 
         <Snackbar open={openLoading} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
           <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
-            Retrieving ...
+            Tracking ...
           </Alert>
         </Snackbar>
-        <Snackbar open={openFailure} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+        <Snackbar open={openSuccess} autoHideDuration={5000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+          <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            Parcel Tracked!
+          </Alert>
+        </Snackbar>
+        <Snackbar open={openFailure} autoHideDuration={5000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
             Invalid Tracking Number
           </Alert>

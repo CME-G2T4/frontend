@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
+
 import { AccountContext } from '../account/account.store';
 import Button from '@mui/material/Button';
 
-function Status() {
+function Status(props) {
   const [status, setStatus] = useState(false);
 
   const { getSession, logout } = useContext(AccountContext);
@@ -14,7 +15,7 @@ function Status() {
         setStatus(true);
       })
   })
-
+  
   return (
     <div>
       { status ? (
