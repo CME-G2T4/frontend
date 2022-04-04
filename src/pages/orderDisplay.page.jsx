@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AccountContext } from '../components/account/account.store';
 import Container from '@mui/material/Container';
@@ -13,7 +14,17 @@ const OrderDisplay = () => {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const { api_link } = useContext(AccountContext);
+    const { getSession, api_link } = useContext(AccountContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getSession()
+        .then(session => {})
+        .catch(err => {
+            navigate("/");
+        })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         axios.get(api_link + '/orders')
@@ -21,10 +32,6 @@ const OrderDisplay = () => {
                 setData(res.data.data.orders);
                 setLoading(false);
             })
-            .catch(error => {
-                console.log(error);
-            })
-
     }, [api_link])
 
     return (

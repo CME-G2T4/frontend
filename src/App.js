@@ -1,5 +1,5 @@
 import './App.css';
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from './components/header/header.component';
 import Home from './pages/home.page';
@@ -23,6 +23,10 @@ function App() {
         <Route path="/upload" element={<Upload />} />
         <Route path="/display" element={<OrderDisplay />} />
         <Route path="/fulfilment" element={<FulfilmentDisplay />} />
+        <Route
+          path="*"
+          element={<Navigate to="/" replace />}
+        />
       </Routes>
     </Account>
   )
