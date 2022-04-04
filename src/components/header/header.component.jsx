@@ -108,6 +108,15 @@ export default function Header() {
               </ListItemIcon>
               <ListItemText primary={`Display Fulfilment`} />
             </ListItem>
+            {/* Inventory */}
+            <ListItem button component="a" href="/inventory" className={"" + ( pathname === "/inventory" ? "current" : "")} >
+              <ListItemIcon >
+                <Icon classes={{root: useStyles.iconRoot}}>
+                  {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+                </Icon>
+              </ListItemIcon>
+              <ListItemText primary={`Display Inventory`} />
+            </ListItem>
           </>
         : null
         }

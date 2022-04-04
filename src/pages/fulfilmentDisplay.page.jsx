@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AccountContext } from '../components/account/account.store';
 import axios from 'axios';
 import Container from '@mui/material/Container';
@@ -13,10 +14,20 @@ const FulfilmentDisplay = () => {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const { api_link } = useContext(AccountContext);
+    const { getSession, api_link } = useContext(AccountContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get( api_link + '/fulfilment')
+        getSession()
+            .then(session => { })
+            .catch(err => {
+                navigate("/");
+            })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        axios.get(api_link + '/fulfilment')
             .then(res => {
                 setData(res.data.data.items);
                 setLoading(false);
