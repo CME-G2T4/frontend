@@ -79,11 +79,14 @@ TablePaginationActions.propTypes = {
 
 const FufilmentDetails = (props) => {
 
+    console.log("data in component")
+    console.log(props.data.items)
+
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.data.length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.data.items.length) : 0;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -109,8 +112,8 @@ const FufilmentDetails = (props) => {
                     </TableHead>
                     <TableBody>
                         {(rowsPerPage > 0
-                            ? props.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : props.data
+                            ? props.data.items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : props.data.items
                         ).map((row) => (
                             <TableRow
                                 key={row.fulfilment_id}
@@ -137,7 +140,7 @@ const FufilmentDetails = (props) => {
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                                 colSpan={6}
-                                count={props.data.length}
+                                count={props.data.items.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 SelectProps={{
