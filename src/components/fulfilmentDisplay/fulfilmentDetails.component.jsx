@@ -124,7 +124,7 @@ const FufilmentDetails = (props) => {
                                 </TableCell>
                                 <TableCell align="right">{row.order_id}</TableCell>
                                 <TableCell align="right">{row.driver_id}</TableCell>
-                                <TableCell align="right">{row.delivery_date}</TableCell>
+                                <TableCell align="right">{row.delivery_date.slice(0,16)}</TableCell>
                                 <TableCell align="right">{row.order_address}</TableCell>
                             </TableRow>
                         ))}

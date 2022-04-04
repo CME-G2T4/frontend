@@ -40,6 +40,7 @@ const FulfilmentDisplay = () => {
         }
         setOpenFailure(false);
         setOpenLoading(false);
+        setOpenSuccess(false);
     };
 
     const [driverID, setDriverID] = useState("");
