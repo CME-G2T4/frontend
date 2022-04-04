@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
+import { AccountContext } from '../account/account.store';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,20 +16,24 @@ import ListItemText from '@mui/material/ListItemText';
 import Icon from '@mui/material/Icon';
 import { makeStyles } from '@mui/styles';
 
-// import './header.styles.scss';
+import './header.styles.scss';
 import Logo from '../../assets/logo.png';
+import Status from './status.component';
 
 export default function Header() {
 
-  const pathname = window.location.pathname;
-  // const path = pathname === '/' ? 'home' : pathname.substr(1);
-  // const country = pathname.split("/")[1];
-  // var item = null;
-  // if (pathname.split("/").length > 2) {
-  //   var item = pathname.split("/")[2];
-  // }
+  const { getSession } = useContext(AccountContext);
+  const location = useLocation()
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  // const [openTH, setOpenTH] = useState(true);
+  useEffect(() => {
+    getSession()
+      .then(session => {
+        setLoggedIn(true);
+      })
+  })
+  
+  const pathname = location.pathname;
 
   // For the icons
   const useStyles = makeStyles({
@@ -58,7 +64,7 @@ export default function Header() {
     >
       <Box my={1}>
         <Toolbar component="a" href="/">
-          <img style={{width:"100%"}} src={Logo} alt="Aramco"  />
+          <img style={{width:"100%"}} src={Logo} alt="ShinobiLorry"  />
         </Toolbar>
       </Box>
       <Divider />
@@ -71,35 +77,40 @@ export default function Header() {
               {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
             </Icon>
           </ListItemIcon>
-          <ListItemText primary={`Tracking Info`} />
+          <ListItemText primary={`Track My Parcel`} />
         </ListItem>
-        {/* Upload */}
-        <ListItem button component="a" href="/upload" className={"" + ( pathname === "/upload" ? "current" : "")} >
-          <ListItemIcon >
-            <Icon classes={{root: useStyles.iconRoot}}>
-              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
-            </Icon>
-          </ListItemIcon>
-          <ListItemText primary={`Upload Orders`} />
-        </ListItem>
-        {/* Display */}
-        <ListItem button component="a" href="/display" className={"" + ( pathname === "/display" ? "current" : "")} >
-          <ListItemIcon >
-            <Icon classes={{root: useStyles.iconRoot}}>
-              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
-            </Icon>
-          </ListItemIcon>
-          <ListItemText primary={`Display Orders`} />
-        </ListItem>
-        {/* Fulfilment */}
-        <ListItem button component="a" href="/fulfilment" className={"" + ( pathname === "/fulfilment" ? "current" : "")} >
-          <ListItemIcon >
-            <Icon classes={{root: useStyles.iconRoot}}>
-              {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
-            </Icon>
-          </ListItemIcon>
-          <ListItemText primary={`Display Fulfilment`} />
-        </ListItem>
+        { loggedIn ? 
+          <>
+            {/* Upload */}
+            <ListItem button component="a" href="/upload" className={"" + ( pathname === "/upload" ? "current" : "")} >
+              <ListItemIcon >
+                <Icon classes={{root: useStyles.iconRoot}}>
+                  {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+                </Icon>
+              </ListItemIcon>
+              <ListItemText primary={`Upload Orders`} />
+            </ListItem>
+            {/* Display */}
+            <ListItem button component="a" href="/display" className={"" + ( pathname === "/display" ? "current" : "")} >
+              <ListItemIcon >
+                <Icon classes={{root: useStyles.iconRoot}}>
+                  {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+                </Icon>
+              </ListItemIcon>
+              <ListItemText primary={`Display Orders`} />
+            </ListItem>
+            {/* Fulfilment */}
+            <ListItem button component="a" href="/fulfilment" className={"" + ( pathname === "/fulfilment" ? "current" : "")} >
+              <ListItemIcon >
+                <Icon classes={{root: useStyles.iconRoot}}>
+                  {/* <img className={useStyles.imageIcon} src={ThailandFlag} alt="TH" /> */}
+                </Icon>
+              </ListItemIcon>
+              <ListItemText primary={`Display Fulfilment`} />
+            </ListItem>
+          </>
+        : null
+        }
       </List>
     </Box>
   );
@@ -107,7 +118,7 @@ export default function Header() {
   return (
     <>
       <Box>
-        <AppBar position="static" color="transparent" enableColorOnDark="true" style={{  }}>
+        <AppBar position="static" color="transparent" style={{  }}>
           <Toolbar>
             <IconButton
               size="large"
@@ -123,6 +134,7 @@ export default function Header() {
               anchor={'left'}
               open={state['left']}
               onClose={toggleDrawer('left', false)}
+              onOpen={toggleDrawer('left', true)}
             >
               { list('left') }
             </SwipeableDrawer>
@@ -133,6 +145,7 @@ export default function Header() {
                 <img style={{ width: "50%", margin: 'auto'}} src={Logo} alt="ShinobiLorry"  />
               </Box>
             </Typography>
+            <Status />
           </Toolbar>
         </AppBar>
       </Box>

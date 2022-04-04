@@ -155,35 +155,6 @@ const FufilmentDetails = (props) => {
                 </Table>
             </TableContainer>
         </>
-        // <TableContainer >
-        //     <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        //         <TableHead>
-        //             <TableRow>
-        //                 <TableCell>Fulfilment ID</TableCell>
-        //                 <TableCell align="right">Order ID</TableCell>
-        //                 <TableCell align="right">Driver ID</TableCell>
-        //                 <TableCell align="right">Delivery Date</TableCell>
-        //                 <TableCell align="right">Order Address</TableCell>
-        //             </TableRow>
-        //         </TableHead>
-        //         <TableBody>
-        //             {props.data.map((row) => (
-        //                 <TableRow
-        //                     key={row.fulfilment_id}
-        //                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-        //                 >
-        //                     <TableCell component="th" scope="row">
-        //                         {row.fulfilment_id}
-        //                     </TableCell>
-        //                     <TableCell align="right">{row.order_id}</TableCell>
-        //                     <TableCell align="right">{row.driver_id}</TableCell>
-        //                     <TableCell align="right">{row.delivery_date}</TableCell>
-        //                     <TableCell align="right">{row.order_address}</TableCell>
-        //                 </TableRow>
-        //             ))}
-        //         </TableBody>
-        //     </Table>
-        // </TableContainer>
     )
 }
 

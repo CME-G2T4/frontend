@@ -111,30 +111,12 @@ const OrderDetails = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {/* {props.data.map((row) => (
-                        <TableRow
-                            key={row.order_id}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {row.order_id}
-                            </TableCell>
-                            <TableCell align="right">{row.customer_name}</TableCell>
-                            <TableCell align="right">Email</TableCell>
-                            <TableCell align="right">{row.order_address}</TableCell>
-                            <TableCell align="right">{row.order_datetime}</TableCell>
-                            <TableCell align="right">{row.order_details}</TableCell>
-                            <TableCell align="right">{row.tracking_no}</TableCell>
-                            <TableCell align="right">{row.order_status}</TableCell>
-                            <TableCell align="right">{row.delivery_date}</TableCell>
-                        </TableRow>
-                    ))} */}
                     {(rowsPerPage > 0
                         ? props.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         : props.data
                     ).map((row) => (
                         <TableRow
-                            key={row.fulfilment_id}
+                            key={row.order_id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
