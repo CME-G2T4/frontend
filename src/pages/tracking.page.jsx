@@ -40,6 +40,7 @@ function Tracking() {
     }
     setOpenFailure(false);
     setOpenLoading(false);
+    setOpenSuccess(false);
   };
 
   const [trackingNumber, setTrackingNumber] = useState('');

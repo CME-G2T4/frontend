@@ -123,7 +123,7 @@ const OrderDetails = (props) => {
                                 {row.order_id}
                             </TableCell>
                             <TableCell align="right">{row.customer_name}</TableCell>
-                            <TableCell align="right">Email</TableCell>
+                            <TableCell align="right">{row.customer_email}</TableCell>
                             <TableCell align="right">{row.order_address}</TableCell>
                             <TableCell align="right">{row.order_datetime}</TableCell>
                             <TableCell align="right">{row.order_details}</TableCell>

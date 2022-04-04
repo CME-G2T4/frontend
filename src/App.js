@@ -10,6 +10,7 @@ import Order from './pages/order.page';
 import Upload from './pages/upload.page.jsx';
 import OrderDisplay from './pages/orderDisplay.page';
 import FulfilmentDisplay from './pages/fulfilmentDisplay.page';
+import InventoryDisplay from './pages/inventoryDisplay.page';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/upload" element={<Upload />} />
         <Route path="/display" element={<OrderDisplay />} />
         <Route path="/fulfilment" element={<FulfilmentDisplay />} />
+        <Route path="/inventory" element={<InventoryDisplay />} />
         <Route
           path="*"
           element={<Navigate to="/" replace />}

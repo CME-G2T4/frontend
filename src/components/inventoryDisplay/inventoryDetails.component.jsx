@@ -77,16 +77,13 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
-const FufilmentDetails = (props) => {
-
-    console.log("data in component")
-    console.log(props.data.items)
+const InventoryDetails = (props) => {
 
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.data.items.length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - props.data.length) : 0;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -99,33 +96,29 @@ const FufilmentDetails = (props) => {
 
     return (
         <>
-            <TableContainer>
-                <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+            <TableContainer >
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Fulfilment ID</TableCell>
+                            <TableCell>Inventory ID</TableCell>
                             <TableCell align="right">Order ID</TableCell>
-                            <TableCell align="right">Driver ID</TableCell>
-                            <TableCell align="right">Delivery Date</TableCell>
-                            <TableCell align="right">Order Address</TableCell>
+                            <TableCell align="right">Lot Number</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {(rowsPerPage > 0
-                            ? props.data.items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : props.data.items
+                            ? props.data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                            : props.data
                         ).map((row) => (
                             <TableRow
-                                key={row.fulfilment_id}
+                                key={row.inventory_id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {row.fulfilment_id}
+                                    {row.inventory_id}
                                 </TableCell>
                                 <TableCell align="right">{row.order_id}</TableCell>
-                                <TableCell align="right">{row.driver_id}</TableCell>
-                                <TableCell align="right">{row.delivery_date.slice(0,16)}</TableCell>
-                                <TableCell align="right">{row.order_address}</TableCell>
+                                <TableCell align="right">{row.lot_num}</TableCell>
                             </TableRow>
                         ))}
 
@@ -139,8 +132,8 @@ const FufilmentDetails = (props) => {
                         <TableRow>
                             <TablePagination
                                 rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                                colSpan={6}
-                                count={props.data.items.length}
+                                colSpan={12}
+                                count={props.data.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 SelectProps={{
@@ -161,4 +154,8 @@ const FufilmentDetails = (props) => {
     )
 }
 
-export default FufilmentDetails;
+
+
+
+
+export default InventoryDetails;
