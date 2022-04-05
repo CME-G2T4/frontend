@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { AccountContext } from '../components/account/account.store';
+// import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+// import { AccountContext } from '../components/account/account.store';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -16,7 +17,7 @@ const Upload = () => {
     const [openFailure, setOpenFailure] = useState(false);
     const [openSuccess, setOpenSuccess] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
-    const { api_link } = useContext(AccountContext);
+    // const { api_link } = useContext(AccountContext);
 
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
