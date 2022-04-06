@@ -52,6 +52,7 @@ function Tracking() {
 
   const onSubmit = event => {
     event.preventDefault();
+    setOrderDetails([]);
 
     setOpenLoading(true);
     setLoading(true);
